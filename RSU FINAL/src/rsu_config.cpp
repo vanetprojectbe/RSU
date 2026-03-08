@@ -15,8 +15,8 @@ static String cmsUrl;
 void cfg_init() {
   prefs.begin("rsu", false);
   apiKey = prefs.getString("apiKey", "CHANGE_ME");
-  cmsUrl = prefs.getString("cmsUrl", "https://your-cms.vercel.app/api");
-
+cmsUrl = prefs.getString("cmsUrl", "https://cms-backend-lmof.onrender.com/api");
+  
   if (!prefs.isKey("wifi_ssid")) {
     prefs.putString("wifi_ssid", wifi_ssid);
     prefs.putString("wifi_pass", wifi_pass);
