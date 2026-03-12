@@ -85,7 +85,7 @@ Cloud Monitoring System
 
 | SD Pin | ESP32 Pin |
 | --- | --- |
-| **VCC** | 3.3V / 5V |
+| **VCC** | Vin / 5V |
 | **CS** | GPIO 15 |
 | **SCK** | GPIO 18 |
 | **MOSI** | GPIO 23 |
