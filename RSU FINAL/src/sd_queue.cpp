@@ -4,9 +4,12 @@
 #include <SD.h>
 #include "config.h"
 #include "uplink.h"
+#include <SPI.h>
 
-void sdq_init(){ SD.begin(SD_CS); }
-
+void sdq_init(){
+  SPI.begin(18, 19, 23, 15);
+  SD.begin(SD_CS);
+}
 void sdq_enqueue(const char* json){
 File f = SD.open("/queue.ndjson", FILE_WRITE);
   if(f){ f.println(json); f.close(); }
@@ -18,5 +21,11 @@ void sdq_retry(){
   String line=f.readStringUntil('\n');
   f.close();
   if(line.length()==0) return;
-  if(uplink_post("/incidents/report", line.c_str())) SD.remove("/queue.ndjson");
+  if(uplink_post("/accidents", line.c_str())) SD.remove("/queue.ndjson");
+}
+#include <SPI.h>
+
+void sdq_init(){
+  SPI.begin(18, 19, 23, 15);
+  SD.begin(SD_CS);
 }
