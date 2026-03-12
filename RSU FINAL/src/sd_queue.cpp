@@ -17,7 +17,7 @@ void sdq_init(){
 
 void sdq_enqueue(const char* json){
   Serial.println("Writing to SD queue...");
-  File f = SD.open("/queue.ndjson", FILE_WRITE);
+  File f = SD.open("queue.ndjson", FILE_WRITE);
   if(f){
     f.println(json);
     f.close();
@@ -25,7 +25,7 @@ void sdq_enqueue(const char* json){
 }
 
 void sdq_retry(){
-  File f = SD.open("/queue.ndjson");
+  File f = SD.open("queue.ndjson");
   if(!f) return;
 
   String line = f.readStringUntil('\n');
@@ -34,6 +34,6 @@ void sdq_retry(){
   if(line.length() == 0) return;
 
   if(uplink_post("/accidents", line.c_str())){
-    SD.remove("/queue.ndjson");
+    SD.remove("queue.ndjson");
   }
 }
