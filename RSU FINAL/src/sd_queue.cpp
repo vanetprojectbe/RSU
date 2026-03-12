@@ -16,6 +16,7 @@ void sdq_init(){
 }
 
 void sdq_enqueue(const char* json){
+  Serial.println("Writing to SD queue...");
   File f = SD.open("/queue.ndjson", FILE_WRITE);
   if(f){
     f.println(json);
