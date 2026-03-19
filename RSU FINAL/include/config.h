@@ -8,3 +8,4 @@
 #define LORA_FREQ 915E6
 #define SD_CS 15
 #define HEARTBEAT_MS 60000
+#define LORA_SYNC_WORD  0x34
